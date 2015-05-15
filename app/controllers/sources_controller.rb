@@ -1,5 +1,7 @@
 class SourcesController < InheritedResources::Base
 
+  respond_to :json
+
   private
 
     def source_params
