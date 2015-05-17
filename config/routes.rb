@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user do
-    resources :sources
-    resources :events
+    ActiveAdmin.routes(self)
   end
 
 scope '/api' do

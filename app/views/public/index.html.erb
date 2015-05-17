@@ -1,1 +1,6 @@
-<h1>Calendar.</h1>
+<h1>The Boston Civic Technology Calendar Project.</h1>
+<p>This project is an API or aggregating events in the Boston Civic Technology ecosystem.</p>
+
+<% if current_user.present? %>
+  <%= link_to "admin panel", admin_root_path %>
+<% end %>
