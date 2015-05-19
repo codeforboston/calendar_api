@@ -11,12 +11,14 @@ class EventsController < InheritedResources::Base
     end
 
     @events = date_filter(@events, params)
+    @events = paginate(@events, params)
 
   end
 
   def index
     @events = Event.all
     @events = date_filter(@events, params)
+    @events = paginate(@events, params)
   end
 
   private
@@ -38,6 +40,10 @@ class EventsController < InheritedResources::Base
         # otherwise pass through
         events
       end
+    end
+
+    def paginate(events, params)
+      events.paginated(page: params[:page], per_page: params[:per_page])
     end
 end
 
