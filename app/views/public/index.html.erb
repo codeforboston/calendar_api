@@ -1,6 +1,11 @@
-<h1>The Boston Civic Technology Calendar Project.</h1>
-<p>This project is an API or aggregating events in the Boston Civic Technology ecosystem.</p>
+<h1>Boston Civic Technology Calendar API Project.</h1>
+<p>...is a <a href="htp://codeforboston.org">Code for Boston</a> project. It is an API for aggregating events in the Boston Civic Technology ecosystem.</p>
+<p>Documentation coming soon...</p>
+<p>For questions/feedback/concerns/anything, really, contact <a href="mailto:hello@codeforboston.org">hello@codeforboston.org</a></p>
+
+<hr>
 
 <% if current_user.present? %>
-  <%= link_to "admin panel", admin_root_path %>
+  <p>OOOoo lucky you, you're an admin.</p>
+  <%= link_to "admin panel", admin_root_path, class: "button" %>
 <% end %>
