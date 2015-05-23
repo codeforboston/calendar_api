@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     ActiveAdmin.routes(self)
   end
 
+  resources :sources, only: [:new, :create]
+
 scope '/api' do
   scope '/v1' do
     resources :events, only: [:index, :show], defaults: { format: :json } do
