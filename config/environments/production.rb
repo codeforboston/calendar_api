@@ -79,4 +79,6 @@ Rails.application.configure do
 
   config.assets.precompile += ['active_admin.css']
 
+  config.assets.compile = true
+
 end
