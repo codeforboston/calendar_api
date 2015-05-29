@@ -24,7 +24,7 @@ class EventsController < InheritedResources::Base
   private
 
     def event_params
-      params.require(:event).permit(:source_id, :icaluid, :start_date, :end_date, :title, :description, :url, :pricing, :contact_email, :organizer)
+      params.require(:event).permit(:source_id, :icaluid, :start_date, :end_date, :title, :description, :location, :url, :pricing, :contact_email, :organizer, :geo)
     end
 
     def date_filter(events, params)
