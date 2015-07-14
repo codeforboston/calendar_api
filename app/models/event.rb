@@ -1,7 +1,6 @@
 # A calendar event
 class Event < ActiveRecord::Base
   belongs_to :source
-  serialize :geo, Array
   before_save :ensure_organizer
 
   include PgSearch
