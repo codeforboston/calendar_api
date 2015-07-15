@@ -15,6 +15,16 @@ class EventsController < InheritedResources::Base
 
   end
 
+  def create
+    @event = Event.create(event_params)
+    if @event.save
+      redirect_to :back, flash: { notice: "Thanks! Your event was added to the database. See you on #{ActionView::Helpers::DateHelper.time_ago_in_words @event.start_date}" }
+    else
+
+      render :new
+    end
+  end
+
   def index
     @events = Event.all
     @events = date_filter(@events, params)

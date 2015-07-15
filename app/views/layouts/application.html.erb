@@ -22,6 +22,14 @@
   </header>
 
   <main class="main">
+    <div class="messages">
+      <% if flash[:error] -%>
+        <p class='error'><%= flash[:error] %></p>
+      <% end -%>
+      <% if flash[:notice] -%>
+        <p class='notice'><%= flash[:notice] %></p>
+      <% end -%>
+    </div>
     <%= yield %>
   </main>
 

@@ -2,6 +2,7 @@
 class Event < ActiveRecord::Base
   belongs_to :source
   before_save :ensure_organizer
+  validates_presence_of :title, :start_date, :end_date
 
   include PgSearch
   pg_search_scope :search_by_content, against: [:title,

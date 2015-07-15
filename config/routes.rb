@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :sources, only: [:new, :create]
+  resources :events, only: [:new, :create]
 
 scope '/api' do
   scope '/v1' do

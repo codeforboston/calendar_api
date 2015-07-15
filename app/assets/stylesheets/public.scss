@@ -40,9 +40,31 @@ a {
   }
 }
 
+.errors {
+  color: #D04949;
+}
+
+.messages {
+  .error, .notice {
+    border-radius: 10px;
+    padding: 1em 2em;
+    border: 2px solid;
+  }
+  .notice {
+    color: #fff;
+    background: #27B844;
+    border-color: darken(#27B844, 4%);
+  }
+  .error {
+    color: #fff;
+    background: #D04949;
+    border-color: darken(#D04949, 4%);
+  }
+}
+
 .main {
   h1, h2, h3 {
-    color: lighten($black, 20%);
+    color: lighten($black, 15%);
     text-align: center;
   }
   form {
@@ -53,16 +75,28 @@ a {
     background: white;
     border-bottom: 4px solid darken(white, 2%);
 
+    &.wide {
+      max-width: 50em;
+    }
+    .half {
+      display: inline-block;
+      width: 49%;
+      @media (max-width: 758px) {
+        width: 100%;
+      }
+    }
+
     .field label {
-      color: lighten($black, 70%);
+      color: lighten($black, 50%);
       padding: 5px;
       display: inline-block;
     }
-    .field input:not([type=checkbox]) {
+    .field input:not([type=checkbox]), textarea {
       width: 100%;
-      border: 1px solid lighten($black, 70%);
+      border: 1px solid lighten($black, 50%);
       border-radius: 2px;
       padding: 10px;
+      font-size: 1em;
     }
     .actions {
       text-align: right;
