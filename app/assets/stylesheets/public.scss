@@ -46,19 +46,14 @@ a {
 
 .messages {
   .error, .notice {
-    border-radius: 10px;
-    padding: 1em 2em;
-    border: 2px solid;
+    padding: 0.5em 0.75em;
+    border-left: 0.5em solid;
   }
   .notice {
-    color: #fff;
-    background: #27B844;
-    border-color: darken(#27B844, 4%);
+    color: #27B844;
   }
   .error {
-    color: #fff;
-    background: #D04949;
-    border-color: darken(#D04949, 4%);
+    color: #D04949;
   }
 }
 
