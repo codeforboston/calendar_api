@@ -5,7 +5,7 @@ require 'net/http'
 ENV['RAILS_ENV'] ||= 'development'
 require File.expand_path('../../config/environment', __FILE__)
 
-sources = Source.all
+sources = Source.where(approved: true)
 
 
 def create_or_update_event(icaluid, attributes)
@@ -14,12 +14,11 @@ def create_or_update_event(icaluid, attributes)
   puts icaluid
   puts attributes
 
-  Event.where(icaluid: icaluid).first_or_initialize do |event|
-    event.update(attributes)
-    puts "Updated #{attributes[:title]}"
-    event.save
-  end
-
+  event = Event.where(icaluid: icaluid).first_or_initialize
+  event.update(attributes)
+  puts "Updated #{attributes[:title]}"
+  event.save
+  puts event.errors.full_messages
 
 end
 
@@ -28,8 +27,20 @@ def harvest_events(source)
 
   puts "\nHarvesting Events from source: \"#{source.name}\" (#{source.url})..."
 
-  uri = URI source.url
-  response = Net::HTTP.get uri
+
+  puts "\nFetch source from URL"
+  begin
+    uri = URI source.url
+    response = Net::HTTP.get uri
+  rescue StandardError => e
+    puts "\nError fetching source, flagging #{source.name} to be un-approved due to errors: "
+    puts e
+    source.approved = false
+    source.notes << "\n#{e}"
+    source.save
+    false
+  end
+
   cals = Icalendar.parse response
 
   puts "Found #{cals.count} calendar(s)..."
@@ -51,7 +62,6 @@ def harvest_events(source)
         description: event.description,
         url: event.url,
         location: event.location
-        # geo: event.geo.to_a
       }
 
       create_or_update_event(event.uid.to_s, attributes)

@@ -84,7 +84,14 @@ a {
     .field label {
       color: lighten($black, 50%);
       padding: 5px;
+      margin-top: 5px;
       display: inline-block;
+    }
+    .field_with_errors {
+      display: inline;
+    }
+    .field_with_errors label {
+      color: #D04949;
     }
     .field input:not([type=checkbox]), textarea {
       width: 100%;

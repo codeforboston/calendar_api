@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field ">
+  <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Event Title" %>
   </div>
   <div class="field half">
     <%= f.label :start_date %><br>
-    <%= f.text_field :start_date %>
+    <%= f.text_field :start_date , value: Time.now.strftime("%Y/%m/%d %H:00") %>
   </div>
   <div class="field half">
     <%= f.label :end_date %><br>
@@ -29,23 +29,23 @@
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, placeholder: "1 Main Street, Boston MA" %>
   </div>
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, placeholder: "http://eventwebsite.com" %>
   </div>
   <div class="field">
     <%= f.label :pricing %><br>
-    <%= f.text_field :pricing %>
+    <%= f.text_field :pricing, placeholder: "Leave blank if free" %>
   </div>
   <div class="field half">
     <%= f.label :organizer %><br>
-    <%= f.text_field :organizer %>
+    <%= f.text_field :organizer, placeholder: "First Last" %>
   </div>
   <div class="field half">
     <%= f.label :contact_email %><br>
-    <%= f.text_field :contact_email %>
+    <%= f.text_field :contact_email, placeholder: "organizer@email.com" %>
   </div>
 
   <div class="actions">
